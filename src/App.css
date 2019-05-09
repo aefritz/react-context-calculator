@@ -6,3 +6,9 @@
 .btn-group {
   display: block;
 }
+button {
+  margin: 3px;
+}
+.keyboard {
+  display: block;
+}

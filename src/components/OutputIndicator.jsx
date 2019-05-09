@@ -6,7 +6,7 @@ export default function OutputIndicator (props) {
     <GlobalStateConsumer>
       {(value) => (<div className="jumbotron jumbotron-fluid">
           <div className="container">
-            <h1 className="display-4">{value.value}</h1>
+            <h1 className="display-4">{value.valueFocus ? value.value : value.payload}</h1>
           </div>
         </div>)}
     </GlobalStateConsumer>
