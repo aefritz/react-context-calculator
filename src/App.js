@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {GlobalStateProvider} from './components/GlobalState';
+import {GlobalStateConsumer} from './components/GlobalState';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      value: 0
+    }
+  }
+
+  add (value) {
+    this.setState(prevState => ({
+      value: prevState.value + value
+    }))
+  }
+
+  subtract (value) {
+    this.setState(prevState => ({
+      value: prevState.value - value
+    }))
+  }
+
+  multipy (value) {
+    this.setState(prevState => ({
+      value: prevState.value * value
+    }))
+  }
+
+  divide (value) {
+    this.setState(prevState => ({
+      value: prevState.value * value
+    }))
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <GlobalStateProvider value={this.state}>
+          <div>
+            <GlobalStateConsumer>
+              {value => (<div>{value.value}</div>)}
+            </GlobalStateConsumer>
+          </div>
+        </GlobalStateProvider>
+        </div>
+      );
+  }
 }
 
 export default App;
